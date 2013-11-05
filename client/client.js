@@ -1,28 +1,22 @@
-Template.chat.messages = function() {
+Template.messages.messages = function() {
   return Messages.find({}, {sort: {time: -1}});
-  // SELECT * form messages ORDER BY time DESC;
-};
+}
 
-Template.formulario.events = {
-  'keydown #msg': function (e) {
-    if(e.which == 13) { //13 = Enter
-      var nombre = document.getElementById('nom');
-      var msg = document.getElementById('msg');
+Template.input.events = {
+  'submit #myform' : function (event) {
+    event.preventDefault();
+    var name = 'Anonymous';
+    var message = $('#message');
 
-      var chatero = 'Anonimo';
+    if (message.value != '') {
+      Messages.insert({
+        name: name,
+        message: message.val(),
+        time: Date.now(),
+      });
 
-      if(msg.value != '') {
-        if(nombre.value != '') chatero = nombre.value;
-
-        Messages.insert({
-          'nombre': chatero,
-          'mensaje': msg.value,
-          'time': Date.now()
-        });
-
-        document.getElementById('msg').value = '';
-        msg.value = '';
-      }  
+      document.getElementById('message').value = '';
+      message.value = '';
     }
   }
-};
+}
