@@ -1,0 +1,25 @@
+<head>
+  <title>Chat</title>
+</head>
+
+<body>
+  <h1>Meteor Chat</h1>
+  {{> welcome}}
+  {{> chat}}
+  {{> formulario}}
+</body>
+
+<template name="welcome">
+  <p>Welcome to my first meteor chat</p>
+</template>
+
+<template name="chat">
+  {{#each messages}}
+  <p><strong>{{ nombre }}</strong>: {{ mensaje }}</p>
+  {{/each}}
+</template>
+
+<template name="formulario">
+  <input type="text" name="nom" id="nom" placeholder="Ingresa tu nombre"><br />
+  <input type="text" name="msg" id="msg" placeholder="Ingresa tu mensaje" size="35"><br>
+</template>
