@@ -6,37 +6,47 @@
 </head>
 <body>
   <div class="container">
-    <h1>Bienvenido</h1>
+    <h1>Bienvenido al Chat</h1>
     <div class="row">
       <div class="col-md-12">
-        <div class="well">
+        <div class="well" align="right">
            {{#if currentUser}}
-        <h4> Hola      
+        <h4 > Hola {{> user }} </h4>
 
           {{else}}       
-         Sign in with Twitter to add your message to this chat!</h4>
+         <h4>Sign in with Twitter to add your message to this chat!</h4>
           {{/if}}
-                {{loginButtons}}
+                {{loginButtons align="right"}}
+          <br><br>     
 
-
+          {{> input}}
           </div>
     
         <div class="jumbotron">
 
           {{> messages }}
         </div>
-        {{> input}}
+        
       </div>
     </div>
   </div>
 </body>
+<template name="user">
+ 
+<a target="_blank" href="http://twitter.com/{{user}}"><img src="{{ image}}"/> {{user}}</a> 
+
+<IMG align= "right"SRC="{{ imagen}}" Height="50" width="50"/> 
+</template>
+
+
 <template name="messages">
   <ul class="list-unstyled">
   {{#each messages}}
-    <li><em class="text-muted">[{{ time }}]</em> <strong class="text-primary">{{ name }}: </strong>{{ message }} </li>
+    <li><em class="text-muted">[{{ time }}]</em> <strong class="text-primary"><a target="_blank" href="http://twitter.com/{{ account }}"> {{ name }}</a> : </strong>{{ message }} </li> 
   {{/each}}
   </ul>
 </template>
+
 <template name="input">
   <form class="form form-inline" id="myform">
     <input type="text" id="message" placeholder="Type your message" class="form-control">
