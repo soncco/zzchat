@@ -20,6 +20,7 @@
           {{> messages }}
         </div>
         {{> input}}
+        {{> typing}}
       </div>
     </div>
   </div>
@@ -42,4 +43,7 @@
   <form class="form form-inline" id="myform">
     <input type="text" id="message" placeholder="Type your message" class="form-control">
   </form>
+</template>
+<template name="typing">
+  <p class="typing" style="display: none;">{{ name }} is typing...</p>
 </template>

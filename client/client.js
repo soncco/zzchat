@@ -33,7 +33,22 @@ Template.input.events = {
         time: Date.now(),
       });
 
+      var aSound = document.createElement('audio');
+      aSound.setAttribute('src', 'chat.mp3');
+      aSound.play()
+
       $message.val('');
     }
+  },
+  'keyup #message': function() {
+    $('.typing').css('display', 'none');
+  },
+  'keydown #message': function() {
+    $('.typing').css('display', 'block');
   }
+}
+
+Template.typing.name = function() {
+  //return (Meteor.user()) ? Meteor.user().services.twitter.screenName : 'Anonymous';
+  return 'Anonymous';
 }
